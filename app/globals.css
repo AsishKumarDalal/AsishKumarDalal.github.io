@@ -1,0 +1,546 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: #f4f0ea; /* Warm retro paper off-white */
+  --foreground: #1c1b18; /* Soft retro black */
+  --muted: #5a5853;
+  --border: #1c1b18; /* Hard borders */
+  --accent: #e63946; /* Retro red */
+  --max-width: 760px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  padding: 4rem 1rem 8rem 1rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  /* subtle retro grain/texture could go here, but solid color is cleaner */
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+h3.domain-title {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--foreground);
+  background: rgba(28, 27, 24, 0.05);
+  border: 1px solid var(--border);
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  border-radius: 4px;
+}
+
+p {
+  color: var(--foreground);
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.role {
+  font-family: 'Space Mono', monospace;
+  color: var(--accent) !important;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+}
+
+a {
+  color: var(--foreground);
+  text-decoration: none;
+  border-bottom: 2px solid var(--foreground);
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+a:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 4px 4px 0px rgba(28, 27, 24, 0.1);
+  object-fit: cover;
+  background: #fff;
+}
+
+.intro {
+  margin-bottom: 4rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  background: #f4f0ea;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.project-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-title {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  color: var(--foreground);
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.project-desc {
+  font-size: 0.95rem;
+  color: var(--foreground);
+  line-height: 1.5;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.project-links a {
+  font-family: 'Space Mono', monospace;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.3rem 0.8rem;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.project-links a:hover {
+  background: var(--foreground);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.experience-item {
+  margin-bottom: 2rem;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.company {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.period {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.oss-item {
+  margin-bottom: 1.5rem;
+}
+
+.footer {
+  margin-top: 6rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  margin-top: 1rem;
+  max-height: 350px;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+  filter: grayscale(80%) contrast(1.1);
+}
+
+.project-item:hover .project-image {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  filter: grayscale(0%) contrast(1);
+}
+
+/* Retro Dock/Nav */
+.dock {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(244, 240, 234, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.75rem 1.5rem;
+  border-radius: 99px;
+  border: 1px solid rgba(28, 27, 24, 0.15);
+  display: flex;
+  gap: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  z-index: 100;
+}
+
+.dock-item {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--foreground);
+  border: none;
+}
+
+.dock-item:hover {
+  background: transparent;
+  color: var(--accent);
+  border: none;
+}
+
+/* Cards */
+.card {
+  padding: 1.5rem;
+  border: 1px solid rgba(28, 27, 24, 0.15);
+  border-radius: 12px;
+  background: #fff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  border-color: rgba(28, 27, 24, 0.3);
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 2rem 1rem 6rem 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .dock {
+    width: 90%;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+}
+
+/* Ultra Minimalist Homepage Redesign */
+.minimal-main {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.hero-section {
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 600px) {
+  .hero-content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+}
+
+.hero-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid rgba(28, 27, 24, 0.15);
+  flex-shrink: 0;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.hero-avatar:hover {
+  filter: grayscale(0%);
+}
+
+.hero-role {
+  font-family: 'Space Mono', monospace;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.hero-bio {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--foreground);
+  margin-bottom: 2rem;
+}
+
+.hero-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.hero-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+
+.divider {
+  height: 1px;
+  background: rgba(28, 27, 24, 0.1);
+  width: 100%;
+  margin: 4rem 0;
+}
+
+.minimal-section {
+  margin-bottom: 5rem;
+}
+
+.section-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* Timeline */
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 600px) {
+  .timeline-item {
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+  }
+}
+
+.timeline-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.timeline-content h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Inter', sans-serif;
+  text-transform: none;
+}
+
+.live-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  border: 1px solid var(--border);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.role-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+
+.desc-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+/* Minimal Project List */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2.5rem;
+}
+
+.view-all {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.project-list-item {
+  border-bottom: 1px solid rgba(28, 27, 24, 0.1);
+  padding-bottom: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+}
+
+.project-list-content {
+  flex: 1;
+}
+
+.project-list-image {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .project-list-image {
+    display: block;
+    width: 180px;
+    height: 110px;
+  }
+}
+
+.project-list-item:hover .project-list-image {
+  filter: grayscale(0%);
+  transform: translateY(-2px);
+}
+
+.project-list-item:last-child {
+  border-bottom: none;
+}
+
+.project-list-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .project-list-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.project-list-header h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0;
+  font-family: 'Inter', sans-serif;
+  text-transform: none;
+}
+
+.project-list-links {
+  display: flex;
+  gap: 1rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.project-list-links a {
+  border-bottom: 1px solid var(--border);
+}
+
+.minimal-tags {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
