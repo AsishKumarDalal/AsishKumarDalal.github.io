@@ -28,6 +28,20 @@ export const projects = [
         github: "https://github.com/AsishKumarDalal/gptoss",
         image: "https://raw.githubusercontent.com/AsishKumarDalal/gptoss/main/public/Gemini_Generated_Image_opyjsjopyjsjopyj.png",
         tags: ["MoE", "PyTorch", "LLM", "Scaling"]
+      },
+      {
+        name: "BERT from Scratch",
+        description: "Implemented BERTand distillBERT entirely from scratch using PyTorch.",
+        github: "https://github.com/AsishKumarDalal/BERT_scratch_pytorch",
+        image: "",
+        tags: ["PyTorch", "Transformers", "NLP", "Deep Learning"]
+      },
+      {
+        name: "VisualBERT",
+        description: "Implemented the VisualBERT vision-language model from scratch, bridging the gap between computer vision and natural language processing.",
+        github: "https://github.com/AsishKumarDalal/VisualBERT",
+        image: "",
+        tags: ["PyTorch", "Vision-Language", "Transformers", "Multimodal"]
       }
     ]
   },
