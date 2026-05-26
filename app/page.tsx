@@ -27,7 +27,24 @@ export default function Home() {
                 <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
               )}
               <a href={`mailto:${profile.email}`}>Email</a>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" download className="highlight-btn">Resume</a>
+              <a 
+                href="/resume.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                download 
+                style={{
+                  backgroundColor: 'var(--foreground)',
+                  color: 'var(--background)',
+                  padding: '0.4rem 1.2rem',
+                  borderRadius: '99px',
+                  fontWeight: '700',
+                  boxShadow: '4px 4px 0px rgba(28, 27, 24, 0.2)',
+                  borderBottom: 'none',
+                  textDecoration: 'none'
+                }}
+              >
+                Resume
+              </a>
             </div>
           </div>
         </div>

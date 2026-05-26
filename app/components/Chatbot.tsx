@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { MessageCircle, X, Send, ArrowUpLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import styles from './Chatbot.module.css';
 
@@ -57,7 +57,7 @@ export default function Chatbot() {
     setMessages(prev => [...prev, { id: botMessageId, role: 'assistant', content: '' }]);
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://backend-of-bot.vercel.app';
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
       const response = await fetch(`${backendUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -110,7 +110,10 @@ export default function Chatbot() {
             className={styles.resizerHandle} 
             onPointerDown={handlePointerDown}
             aria-label="Resize chat window"
-          />
+            title="Drag to resize"
+          >
+            <ArrowUpLeft size={16} className={styles.resizerIcon} />
+          </div>
 
           {/* Header */}
           <div className={styles.header}>
