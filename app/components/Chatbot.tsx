@@ -57,7 +57,7 @@ export default function Chatbot() {
     setMessages(prev => [...prev, { id: botMessageId, role: 'assistant', content: '' }]);
 
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://backend-of-bot.vercel.app';
       const response = await fetch(`${backendUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
