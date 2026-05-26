@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send } from 'lucide-react';
+import { MessageCircle, X, Send, ArrowUpLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import styles from './Chatbot.module.css';
 
@@ -110,7 +110,10 @@ export default function Chatbot() {
             className={styles.resizerHandle} 
             onPointerDown={handlePointerDown}
             aria-label="Resize chat window"
-          />
+            title="Drag to resize"
+          >
+            <ArrowUpLeft size={16} className={styles.resizerIcon} />
+          </div>
 
           {/* Header */}
           <div className={styles.header}>
