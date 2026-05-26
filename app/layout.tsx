@@ -1,10 +1,4 @@
-import type { Metadata } from "next";
-import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "Asish Kumar Dalal | Portfolio",
-  description: "Software Engineer and Solo Founder portfolio of Asish Kumar Dalal.",
-};
+import Chatbot from './components/Chatbot';
 
 export default function RootLayout({
   children,
@@ -13,7 +7,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Chatbot />
+      </body>
     </html>
   );
 }

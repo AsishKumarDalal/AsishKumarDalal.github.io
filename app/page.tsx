@@ -27,6 +27,7 @@ export default function Home() {
                 <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
               )}
               <a href={`mailto:${profile.email}`}>Email</a>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" download className="highlight-btn">Resume</a>
             </div>
           </div>
         </div>
