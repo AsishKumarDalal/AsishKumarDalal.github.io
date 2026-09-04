@@ -1,134 +1,169 @@
-'use client';
+"use client";
 
+import { useState } from 'react';
 import { profile, projects, oss, experience } from './data';
-import './globals.css';
-import Link from 'next/link';
 
 export default function Home() {
+  const [activeFilter, setActiveFilter] = useState<'ALL' | 'AI/ML' | 'Solo Founder'>('ALL');
+
+  const allProjects = projects.flatMap(group => 
+    group.items.map(item => ({ ...item, domain: group.domain }))
+  );
+
+  const filteredProjects = activeFilter === 'ALL' 
+    ? allProjects 
+    : allProjects.filter(p => p.domain === activeFilter);
+
   return (
-    <main className="minimal-main">
+    <main className="main-container">
+      {/* Hero Header */}
+      <section id="about" className="hero-card">
+        <div className="status-badge">
+          <span className="pulse-dot"></span>
+          <span>SYS_STATUS // ONLINE • AVAILABLE FOR WORK</span>
+        </div>
+
+        <div className="hero-top">
+          <div>
+            <h1>{profile.name}</h1>
+            <p className="mono-font" style={{ color: 'var(--accent)', fontSize: '0.9rem', marginTop: '0.4rem', fontWeight: 700 }}>
+              {profile.role}
+            </p>
+          </div>
+          {profile.avatar && (
+            <img src={profile.avatar} alt={profile.name} className="hero-avatar" />
+          )}
+        </div>
+
+        <p className="hero-bio">{profile.about || profile.bio}</p>
+
+        <div className="hero-actions">
+          {profile.github && (
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="link-retro">
+              [GITHUB ↗]
+            </a>
+          )}
+          {profile.linkedin && (
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="link-retro">
+              [LINKEDIN ↗]
+            </a>
+          )}
+          {profile.email && (
+            <a href={`mailto:${profile.email}`} className="link-retro">
+              [EMAIL ✉]
+            </a>
+          )}
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="link-retro" style={{ borderColor: 'var(--accent-amber)', color: 'var(--accent-amber)' }}>
+            [RESUME 📄]
+          </a>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects">
+        <h2>SELECTED_WORK [{filteredProjects.length}]</h2>
+
+        <div className="filter-bar">
+          <button 
+            className={`filter-btn ${activeFilter === 'ALL' ? 'active' : ''}`}
+            onClick={() => setActiveFilter('ALL')}
+          >
+            [ALL]
+          </button>
+          <button 
+            className={`filter-btn ${activeFilter === 'AI/ML' ? 'active' : ''}`}
+            onClick={() => setActiveFilter('AI/ML')}
+          >
+            [AI / ML]
+          </button>
+          <button 
+            className={`filter-btn ${activeFilter === 'Solo Founder' ? 'active' : ''}`}
+            onClick={() => setActiveFilter('Solo Founder')}
+          >
+            [SOLO FOUNDER]
+          </button>
+        </div>
+
+        <div className="projects-grid">
+          {filteredProjects.map((project, idx) => (
+            <div key={idx} className="project-card">
+              <div className="project-card-header">
+                <span className="project-name">{project.name}</span>
+                <div className="project-links">
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="link-subtle">
+                      [SRC ↗]
+                    </a>
+                  )}
+                  {'liveLink' in project && project.liveLink && (
+                    <a href={project.liveLink as string} target="_blank" rel="noopener noreferrer" className="link-retro" style={{ fontSize: '0.7rem', padding: '0.2rem 0.5rem' }}>
+                      [LIVE ↗]
+                    </a>
+                  )}
+                </div>
+              </div>
+              <p className="project-desc">{project.description}</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                {project.tags.map((tag, tIdx) => (
+                  <span key={tIdx} className="tag-badge">#{tag}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience">
+        <h2>EXPERIENCE // HISTORY</h2>
+        <div className="timeline-list">
+          {experience.map((exp, idx) => (
+            <div key={idx} className="timeline-card">
+              <div className="timeline-period">[{exp.period}]</div>
+              <div>
+                <div className="timeline-role">{exp.role}</div>
+                <div className="timeline-company">
+                  {exp.company} {exp.liveLink && <a href={exp.liveLink} target="_blank" rel="noopener noreferrer" className="link-subtle" style={{ marginLeft: '0.5rem' }}>[SITE ↗]</a>}
+                </div>
+                <p className="project-desc">{exp.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Open Source Section */}
+      <section id="oss">
+        <h2>OPEN_SOURCE // CONTRIBUTIONS</h2>
+        <div className="projects-grid">
+          {oss.map((item, idx) => (
+            <div key={idx} className="project-card">
+              <div className="project-card-header">
+                <span className="project-name">{item.name}</span>
+                {item.link && (
+                  <a href={item.link} target="_blank" rel="noopener noreferrer" className="link-retro" style={{ fontSize: '0.75rem', padding: '0.2rem 0.6rem' }}>
+                    [PULL_REQUEST ↗]
+                  </a>
+                )}
+              </div>
+              <p className="project-desc">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Floating Retro Dock Navigation */}
       <nav className="dock">
-        <a href="#about" className="dock-item">About</a>
-        <a href="#experience" className="dock-item">Experience</a>
-        <Link href="/projects" className="dock-item">Projects</Link>
+        <a href="#about" className="dock-item">ABOUT</a>
+        <a href="#projects" className="dock-item">WORK</a>
+        <a href="#experience" className="dock-item">EXP</a>
         <a href="#oss" className="dock-item">OSS</a>
       </nav>
 
-      <header id="about" className="hero-section">
-        <div className="hero-content">
-          <img src={profile.avatar} alt={profile.name} className="hero-avatar" />
-          <div className="hero-text">
-            <h1 style={{ marginBottom: '0.2rem' }}>{profile.name}</h1>
-            <p className="hero-role">{profile.role}</p>
-            <p className="hero-bio">{profile.bio}</p>
-            <div className="hero-links">
-              <a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-              {profile.linkedin && profile.linkedin !== "#" && (
-                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              )}
-              <a href={`mailto:${profile.email}`}>Email</a>
-              <a 
-                href="/resume.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                download 
-                style={{
-                  backgroundColor: 'var(--foreground)',
-                  color: 'var(--background)',
-                  padding: '0.4rem 1.2rem',
-                  borderRadius: '99px',
-                  fontWeight: '700',
-                  boxShadow: '4px 4px 0px rgba(28, 27, 24, 0.2)',
-                  borderBottom: 'none',
-                  textDecoration: 'none'
-                }}
-              >
-                Resume
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="divider"></div>
-
-      <section id="experience" className="minimal-section">
-        <h2 className="section-title">Experience</h2>
-        <div className="timeline">
-          {experience.map((exp, i) => (
-            <div key={i} className="timeline-item">
-              <div className="timeline-meta">
-                <p className="timeline-date">{exp.period}</p>
-              </div>
-              <div className="timeline-content">
-                <h3>
-                  {exp.company}
-                  {exp.liveLink && (
-                    <a href={exp.liveLink} target="_blank" rel="noopener noreferrer" className="live-link">
-                      Live &#8599;
-                    </a>
-                  )}
-                </h3>
-                <p className="role-text">{exp.role}</p>
-                <p className="desc-text">{exp.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="projects" className="minimal-section">
-        <div className="section-header">
-          <h2 className="section-title" style={{ marginBottom: 0 }}>Selected Work</h2>
-          <Link href="/projects" className="view-all">View all projects &#8594;</Link>
-        </div>
-        <div className="project-list">
-          {projects.flatMap(d => d.items).slice(0, 3).map((project, j) => (
-            <div key={j} className="project-list-item">
-              <div className="project-list-content">
-                <div className="project-list-header">
-                  <h3>{project.name}</h3>
-                  <div className="project-list-links">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">Source</a>
-                    {project.liveLink && (
-                      <a href={project.liveLink} target="_blank" rel="noopener noreferrer">Live Site</a>
-                    )}
-                  </div>
-                </div>
-                <p className="desc-text">{project.description}</p>
-                <div className="minimal-tags">
-                  {project.tags?.join(' • ')}
-                </div>
-              </div>
-              {project.image && (
-                <img src={project.image} alt={project.name} className="project-list-image" />
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="oss" className="minimal-section">
-        <h2 className="section-title">Open Source</h2>
-        <div className="project-list">
-          {oss.map((item, i) => (
-            <div key={i} className="project-list-item">
-              <div className="project-list-content">
-                <div className="project-list-header">
-                  <h3>{item.name}</h3>
-                  <div className="project-list-links">
-                    <a href={item.link} target="_blank" rel="noopener noreferrer">View Pull Request</a>
-                  </div>
-                </div>
-                <p className="desc-text">{item.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <footer className="footer" style={{ borderTop: 'none', marginTop: '2rem' }}>
-        <p>&copy; {new Date().getFullYear()} {profile.name}. Designed for impact.</p>
+      {/* Footer */}
+      <footer className="footer">
+        <span>© {new Date().getFullYear()} {profile.name}. ALL RIGHTS RESERVED.</span>
+        <span>SYS_VER 2.4.0 // RETRO_MINIMAL</span>
       </footer>
     </main>
   );

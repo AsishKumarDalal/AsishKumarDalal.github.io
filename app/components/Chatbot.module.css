@@ -3,18 +3,18 @@
   bottom: 2rem;
   right: 2rem;
   z-index: 1000;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
 }
 
 .toggleButton {
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background-color: var(--foreground);
-  color: var(--background);
-  border: none;
+  background-color: #121215;
+  color: #10b981;
+  border: 1px solid #27272a;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 15px rgba(16, 185, 129, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,15 +22,17 @@
 }
 
 .toggleButton:hover {
-  transform: scale(1.05);
-  background-color: var(--accent);
+  transform: scale(1.08);
+  border-color: #10b981;
+  background-color: #18181c;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
 }
 
 .chatWindow {
-  background-color: #fff;
-  border: 1px solid var(--border);
+  background-color: #0c0c0e;
+  border: 1px solid #27272a;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(16, 185, 129, 0.15);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -48,7 +50,6 @@
   cursor: nwse-resize;
   z-index: 10;
   background: transparent;
-  border-top-left-radius: 12px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -56,56 +57,40 @@
 }
 
 .resizerIcon {
-  color: #ffffff;
-  opacity: 0.7;
+  color: #10b981;
+  opacity: 0.6;
   transition: all 0.2s ease;
 }
 
 .resizerHandle:hover .resizerIcon {
   opacity: 1;
-  color: #ffffff;
-  transform: scale(1.1);
-}
-
-@media (max-width: 600px) {
-  .chatWindow {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 0 !important;
-    z-index: 1001 !important;
-  }
-  .resizerHandle {
-    display: none !important;
-  }
+  transform: scale(1.15);
 }
 
 .header {
-  background-color: var(--foreground);
-  color: var(--background);
-  padding: 1rem;
+  background-color: #121215;
+  color: #f4f4f5;
+  padding: 0.85rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Space Mono', monospace;
+  border-bottom: 1px solid #27272a;
 }
 
 .headerTitle {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: #10b981;
 }
 
 .closeButton {
   background: none;
   border: none;
-  color: var(--background);
+  color: #94a3b8;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -114,24 +99,29 @@
 }
 
 .closeButton:hover {
-  color: var(--accent);
+  color: #f4f4f5;
 }
 
 .messagesContainer {
   flex: 1;
   padding: 1rem;
   overflow-y: auto;
-  background-color: var(--background);
+  background-color: #09090b;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
+  font-size: 0.85rem;
 }
 
 .emptyState {
   text-align: center;
-  color: var(--muted);
-  font-size: 0.9rem;
+  color: #71717a;
+  font-size: 0.8rem;
   margin-top: 2rem;
+  line-height: 1.6;
+  border: 1px dashed #27272a;
+  padding: 1.5rem;
+  border-radius: 8px;
 }
 
 .messageRow {
@@ -148,45 +138,42 @@
 }
 
 .messageBubble {
-  max-width: 85%;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  font-size: 0.9rem;
+  max-width: 88%;
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
   line-height: 1.5;
-  white-space: pre-wrap;
   word-wrap: break-word;
+  font-family: 'Inter', sans-serif;
 }
 
 .messageBubble.user {
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: #10b981;
+  color: #000;
+  font-weight: 500;
   border-bottom-right-radius: 2px;
 }
 
 .messageBubble.assistant {
-  background-color: #fff;
-  color: var(--foreground);
-  border: 1px solid var(--border);
+  background-color: #121215;
+  color: #e4e4e7;
+  border: 1px solid #27272a;
   border-bottom-left-radius: 2px;
 }
 
 .loadingBubble {
-  background-color: #fff;
-  color: var(--foreground);
-  border: 1px solid var(--border);
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  border-bottom-left-radius: 2px;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 2px;
+  background-color: #121215;
+  color: #10b981;
+  border: 1px solid #27272a;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
 }
 
 .inputArea {
-  padding: 1rem;
-  background-color: #fff;
-  border-top: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  background-color: #121215;
+  border-top: 1px solid #27272a;
 }
 
 .form {
@@ -196,40 +183,57 @@
 
 .input {
   flex: 1;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 99px;
+  padding: 0.6rem 0.85rem;
+  background: #09090b;
+  border: 1px solid #27272a;
+  border-radius: 6px;
+  color: #f4f4f5;
   outline: none;
-  font-family: inherit;
-  font-size: 0.9rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
   transition: border-color 0.2s;
-  min-width: 0;
 }
 
 .input:focus {
-  border-color: var(--accent);
+  border-color: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
 }
 
 .submitButton {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background-color: var(--foreground);
-  color: var(--background);
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: #10b981;
+  color: #000;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
 .submitButton:hover:not(:disabled) {
-  background-color: var(--accent);
+  background-color: #34d399;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
 }
 
 .submitButton:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .chatWindow {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    z-index: 1001 !important;
+  }
 }
