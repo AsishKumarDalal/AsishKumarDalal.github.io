@@ -18,11 +18,6 @@ export default function Home() {
     <main className="main-container">
       {/* Hero Header */}
       <section id="about" className="hero-card">
-        <div className="status-badge">
-          <span className="pulse-dot"></span>
-          <span>SYS_STATUS // ONLINE • AVAILABLE FOR WORK</span>
-        </div>
-
         <div className="hero-top">
           <div>
             <h1>{profile.name}</h1>
