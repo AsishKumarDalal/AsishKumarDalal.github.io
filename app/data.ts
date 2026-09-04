@@ -15,13 +15,19 @@ export const projects = [
     domain: "AI/ML",
     items: [
       {
+        name: "Statistical Language Model",
+        description: "A high-performance, non-neural statistical language model built from scratch using SVD PPMI embeddings, Kneser-Ney Markov chains, Baum-Welch HMMs, and LDA Gibbs sampling fused via EM interpolation.",
+        github: "https://github.com/AsishKumarDalal/statistical-language-model",
+        image: "",
+        tags: ["Statistical ML", "Python", "SVD", "EM Algorithm", "HMM", "NLP"]
+      },
+      {
         name: "HSKM-Architecture",
         description: "Hierarchical Sparse Kernel Memory (HSKM) Architecture - A hybrid sequence modeling architecture combining learned kernel-based sparse attention with hierarchical memory banks.",
         github: "https://github.com/AsishKumarDalal/HSKM-Architecture",
         image: "https://raw.githubusercontent.com/AsishKumarDalal/HSKM-Architecture/main/public/arch_overview.png",
         tags: ["PyTorch", "Transformers", "Sparse Attention", "Research"]
       },
-      
       {
         name: "GPTOss",
         description: "A Mixture of Experts (MoE) model built from scratch in PyTorch, exploring sparse computation and expert routing.",
@@ -31,7 +37,7 @@ export const projects = [
       },
       {
         name: "BERT from Scratch",
-        description: "Implemented BERTand distillBERT entirely from scratch using PyTorch.",
+        description: "Implemented BERT and distillBERT entirely from scratch using PyTorch.",
         github: "https://github.com/AsishKumarDalal/BERT_scratch_pytorch",
         image: "",
         tags: ["PyTorch", "Transformers", "NLP", "Deep Learning"]
