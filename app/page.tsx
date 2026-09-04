@@ -53,7 +53,7 @@ export default function Home() {
               [EMAIL ✉]
             </a>
           )}
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="link-retro" style={{ borderColor: 'var(--accent-amber)', color: 'var(--accent-amber)' }}>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="link-retro" style={{ borderColor: 'var(--foreground)', color: 'var(--foreground)' }}>
             [RESUME 📄]
           </a>
         </div>
@@ -163,7 +163,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="footer">
         <span>© {new Date().getFullYear()} {profile.name}. ALL RIGHTS RESERVED.</span>
-        <span>SYS_VER 2.4.0 // RETRO_MINIMAL</span>
+        <span>SYS_VER 2.5.0 // RETRO_BRIGHT</span>
       </footer>
     </main>
   );
